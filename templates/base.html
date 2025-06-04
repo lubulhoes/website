@@ -1,0 +1,23 @@
+{{define "layout"}}
+<html>
+<head>
+    <title>Go Blog</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<nav>
+    <ul class="nav">
+    <li><a href="/">Início</a></li>
+    <li><a href="/blog">Sobre mim</a></li>
+    <li><a href="/github">Github</a></li>
+</ul>
+</nav>
+<div class="container">
+    {{ template "content" . }}
+</div>
+<footer class="footer">
+    <span>&copy; 2025 Lucas Bulhões. All rights reserved.</span>
+</footer>
+</body>
+</html>
+{{end}}

@@ -1,6 +1,11 @@
 {{define "post"}}
+    {{template "layout" .}}
+{{end}}
+
+{{define "content"}}
 <article>
-  <h2>{{.Title}}</h2>
-  <p>{{.Content}}</p>
+    <h1>{{.Title}}</h1>
+    <div>{{.Date.Format "02/01/2006"}}</div>
+    <div>{{safeHTML .Data}}</div>
 </article>
 {{end}}
