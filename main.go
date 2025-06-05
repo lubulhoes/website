@@ -45,7 +45,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	slug := strings.TrimPrefix(r.URL.Path, "/post/")
 	for _, post := range posts {
 		if post.Slug == slug {
-			fmt.Println("DEBUG:", post.Title, post.Data)
+			fmt.Println("DEBUG:", post.Title, post.Data, post.Date)
 			tmpl.ExecuteTemplate(w, "post", post)
 			return
 		}
@@ -53,10 +53,10 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func loadContent() *[]Post {
+func loadContent() (*[]Post, error) {
 	files, err := os.ReadDir("content")
 	if err != nil {
-		return nil
+		return nil, err
 	}
 
 	for _, file := range files {
@@ -65,7 +65,7 @@ func loadContent() *[]Post {
 		}
 		content, err := os.ReadFile("content/" + file.Name())
 		if err != nil {
-			return nil
+			return nil, err
 		}
 
 		raw := string(content)
@@ -87,10 +87,10 @@ func loadContent() *[]Post {
 					} else if strings.HasPrefix(line, "description:") {
 						description = strings.TrimSpace(strings.TrimPrefix(line, "description:"))
 					} else if strings.HasPrefix(line, "date:") {
-						dateStr := strings.TrimSpace(strings.TrimPrefix(line, "date:"))
-						date, err = time.Parse(time.RFC3339, dateStr)
+						dateStr := strings.TrimSpace(strings.TrimPrefix(line, "date: "))
+						date, err = time.Parse(time.DateOnly, dateStr)
 						if err != nil {
-							return nil // Handle error appropriately
+							return nil, err
 						}
 					}
 				}
@@ -110,15 +110,15 @@ func loadContent() *[]Post {
 		posts = append(posts, post)
 	}
 
-	return &posts
+	return &posts, nil
 }
 
 func main() {
-	postsList := loadContent()
+	postsList, err := loadContent()
 	if postsList == nil {
-		http.Error(http.ResponseWriter(nil), "Failed to load content", http.StatusInternalServerError)
-		return
+		panic(fmt.Sprintf("Failed to load content: %v", err))
 	}
+
 	http.HandleFunc("/", blogHandler)
 	http.HandleFunc("/post/", postHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))

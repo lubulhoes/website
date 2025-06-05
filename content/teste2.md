@@ -1,7 +1,7 @@
 ---
 title: teste
-Description: "testando markdown"
-Date: 6/4/25
+description: testando markdown
+date: 2025-06-04
 ---
 
 ### Ok

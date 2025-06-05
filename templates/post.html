@@ -3,9 +3,9 @@
 {{end}}
 
 {{define "content"}}
-<article>
+<article class="post">
     <h1>{{.Title}}</h1>
-    <div>{{.Date.Format "02/01/2006"}}</div>
+    <div class="Date">{{.Date.Format "02/01/2006"}}</div>
     <div>{{safeHTML .Data}}</div>
 </article>
 {{end}}
