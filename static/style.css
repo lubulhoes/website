@@ -81,10 +81,6 @@ nav {
   border-radius: 12px 12px 0 0;
   font-size: 1rem;
   letter-spacing: 0.5px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
 }
 
 article a,
@@ -211,4 +207,23 @@ article.post .date {
     margin-left: 0;
     font-size: 0.95rem;
   }
+}
+
+pre, code {
+  background: #23263a;
+  color: #e0e0e0;
+  border-radius: 6px;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+
+pre {
+  padding: 1rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18); /* sombra de fundo */
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  font-size: 0.98em;
 }

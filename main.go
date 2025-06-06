@@ -121,5 +121,5 @@ func main() {
 	http.HandleFunc("/", blogHandler)
 	http.HandleFunc("/post/", postHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":3000", nil)
 }
