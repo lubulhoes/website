@@ -5,7 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #23272f;
+  background: #32364e;
   color: #f5f5f5;
   font-family: 'Inter', 'Montserrat', Arial, sans-serif;
   font-family: 'Inter', 'Montserrat', Arial, sans-serif;
@@ -16,10 +16,9 @@ body {
 .container {
   width: 90%;
   max-width: 1200px;
-  background: #353940;
+  background: #32364e;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  box-sizing: border-box;
+  padding-top: 4.5rem; /* espaço para o nav fixo */
   color: #f5f5f5;
   min-height: calc(100vh - 6rem); /* cobre quase toda a tela, descontando nav e footer */
   display: flex;
@@ -45,11 +44,13 @@ body {
 
 nav {
   width: 100%;
-  background: #2d2d2d;
+  background: #23263a;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   padding: 1rem 0;
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 200;
 }
 
 .nav {
@@ -73,7 +74,7 @@ nav {
 
 .footer {
   width: 100%;
-  background: #2d2d2d;
+  background: #23263a;
   color: #f5f5f5;
   text-align: center;
   padding: 1rem 0;
@@ -88,7 +89,7 @@ nav {
 
 article a,
 .post-link {
-  color: #5ec6e7;
+  color: #7fd1b9;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
@@ -97,8 +98,15 @@ article a,
 
 article a:hover,
 .post-link:hover {
-  color: #7fd1b9;
+  color: #5ec6e7;
   text-decoration: none;
+}
+
+article.post {
+  font-weight: 400; /* texto normal */
+  font-family: sans-serif; /* fonte limpa e moderna */
+  font-size: 1.08rem;
+  line-height: 1.7;
 }
 
 article.post h1 {
@@ -107,7 +115,7 @@ article.post h1 {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #5ec6e7; /* destaque suave */
+  color: #7fd1b9; /* destaque suave */
   letter-spacing: 1px;
 }
 
@@ -130,7 +138,7 @@ article.post .date {
 }
 
 .post-title .post-link {
-  color: #5ec6e7;
+  color: #7fd1b9;
   font-size: 1.15rem;
   font-weight: 600;
   text-decoration: none;
@@ -138,7 +146,7 @@ article.post .date {
 }
 
 .post-title .post-link:hover {
-  color: #7fd1b9;
+  color: #5ec6e7;
   text-decoration: none;
 }
 
@@ -157,7 +165,7 @@ article.post .date {
 }
 
 .post-title .post-link {
-  color: #5ec6e7;
+  color: #7fd1b9;
   font-size: 1.15rem;
   font-weight: 600;
   text-decoration: none;
@@ -184,6 +192,8 @@ article.post .date {
 }
 
 .post-description {
+  font-weight: 400; /* texto normal */
+  font-family: sans-serif; /* fonte limpa e moderna */
   margin: 0.5rem 0 0 0;
   color: #e0e0e0;
   font-size: 1rem;

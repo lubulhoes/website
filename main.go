@@ -45,7 +45,6 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	slug := strings.TrimPrefix(r.URL.Path, "/post/")
 	for _, post := range posts {
 		if post.Slug == slug {
-			fmt.Println("DEBUG:", post.Title, post.Data, post.Date)
 			tmpl.ExecuteTemplate(w, "post", post)
 			return
 		}
